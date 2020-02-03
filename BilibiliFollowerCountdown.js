@@ -25,8 +25,9 @@ function FollowerCountdown(){
                 $(".nav-search-keyword").attr("placeholder","当前粉丝数："+res1.data.follower); // 更新上方搜索框粉丝数
                 $(".n-data-v:eq(1)").html(Math.round(res1.data.follower/1000)/10+"万"); // 更新粉丝数显示（保留一位小数）
                 $(".n-data-v:eq(1)").parent().attr("title",res1.data.follower.toLocaleString()); // 更新鼠标指针显示粉丝数
-                console.log("当前粉丝数："+res1.data.follower); // 更新控制台输出数据
-                 // 判断是否已经到达误差范围内，仅当满足要求时更新获赞数和播放数保证数据实时性便于截图
+                // 更新控制台输出数据
+                // console.log("当前粉丝数："+res1.data.follower);
+                // 判断是否已经到达误差范围内，仅当满足要求时更新获赞数和播放数保证数据实时性便于截图
                 if(targetFollower-res1.data.follower <= offset){
                     $.getJSON("https://api.bilibili.com/x/space/upstat?mid="+uid,function(res2){ // 请求Bilibili API查询数据
                         // 更改参数暂停所有延时事件，防止多重调用
