@@ -14,6 +14,7 @@ var targetFollower=888888; // 目标粉丝数
 var offset=0; // 允许存在的误差，建议最大不超过3
 var interval=500; // 实时请求时间间隔，单位是ms
 var stop=0; // 在控制台输入stop=1即可马上停止倒计时
+var consoleOutputSwitch=true //控制台实时输出开关
 function showAchieve(){
     alert("倒计时完成，截图纪念! \r\n目标粉丝数："+targetFollower+"\r\n达成时间："+Date()+"");
 }
@@ -26,7 +27,7 @@ function FollowerCountdown(){
                 $(".n-data-v:eq(1)").html(Math.round(res1.data.follower/1000)/10+"万"); // 更新粉丝数显示（保留一位小数）
                 $(".n-data-v:eq(1)").parent().attr("title",res1.data.follower.toLocaleString()); // 更新鼠标指针显示粉丝数
                 // 更新控制台输出数据
-                // console.log("当前粉丝数："+res1.data.follower);
+                if(consoleOutputSwitch){console.log("当前粉丝数："+res1.data.follower);}
                 // 判断是否已经到达误差范围内，仅当满足要求时更新获赞数和播放数保证数据实时性便于截图
                 if(targetFollower-res1.data.follower <= offset){
                     $.getJSON("https://api.bilibili.com/x/space/upstat?mid="+uid,function(res2){ // 请求Bilibili API查询数据
