@@ -12,7 +12,7 @@
 var uid=316381099; // UP主用户UID
 var targetFollower=888888; // 目标粉丝数
 var offset=0; // 允许存在的误差，建议最大不超过3
-var interval=1000; // 实时请求时间间隔，单位是ms
+var interval=500; // 实时请求时间间隔，单位是ms
 var stop=0; // 在控制台输入stop=1即可马上停止倒计时
 function showAchieve(){
     alert("倒计时完成，截图纪念! \r\n目标粉丝数："+targetFollower+"\r\n达成时间："+Date()+"");
